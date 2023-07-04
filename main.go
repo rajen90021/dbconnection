@@ -21,6 +21,7 @@ func main() {
 	}
 	defer db.Close()
 
+	/////*******************************************************************//////////////////////////////***********************************
 	// insert, err := db.Query("INSERT INTO book VALUES('5','learning gin framework','raj-jainnnn')") ////inserting the value in db
 	// if err != nil {
 	// 	panic(err.Error())
@@ -55,23 +56,7 @@ func main() {
 
 	}
 
-	//////////deleting /////////////
-	// deletee, err := db.Query("DELETE FROM book WHERE id =2")
-	// if err != nil {
-	// 	panic(err.Error())
-	// }
-	// defer deletee.Close()
-	// // Execute the DELETE statement
-	// result, err := deletee.Execute(deletee) // Delete row with ID = 1
-	// if err != nil {
-	// 	panic(err.Error())
-	// }
-	// rowsAffected, err := result.RowsAffected()
-	// if err != nil {
-	// 	panic(err.Error())
-	// }
-	// fmt.Printf("Deleted %d row(s) from the table\n", rowsAffected)
-	//********************************************************************************************************************second opproch
+	//**************************************************************second opproch ******************************************************
 	//Execute the DELETE statement
 	delete, err := db.Exec("DELETE FROM book WHERE id = ?", 5) // Delete row with ID = 1
 	if err != nil {
@@ -85,15 +70,15 @@ func main() {
 	}
 
 	fmt.Printf("Deleted %d row(s) from the table\n", sucesss)
-	////***************************************************************************************************updating
-	// updatedvalue, err := db.Exec("UPDATE book SET title = 'trying2', author = 'rajen' WHERE id = 2")
-	// if err != nil {
-	// 	panic(err.Error())
-	// }
-	// rowsAffected, err := updatedvalue.RowsAffected()
-	// if err != nil {
-	// 	panic(err.Error())
-	// }
 
-	// fmt.Printf("Updated %d row(s) in the table\n", rowsAffected)
+	//***************************************************************************************************updating
+	updatedvalue, err := db.Exec("UPDATE book SET title = 'trying2', author = 'rajen' WHERE id = 2")
+	if err != nil {
+		panic(err.Error())
+	}
+	rowsAffected, err := updatedvalue.RowsAffected()
+	if err != nil {
+		panic(err.Error())
+	}
+	fmt.Printf("Updated %d row(s) in the table\n", rowsAffected)
 }
